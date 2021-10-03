@@ -11,3 +11,9 @@ git remote rm airflow
 git branch -d airflow
 git checkout main && git push --force
 git push --set-upstream origin fix
+#couldn't create pull request, so pull initial commit 
+git remote add ancestor https://github.com/Jedi-University/jedi.bigdata.1.git
+git checkout -b ancestor
+git pull ancestor main --allow-unrelated-histories
+git checkout main && git merge ancestor && git push
+git checkout fix  && git merge ancestor && git push
