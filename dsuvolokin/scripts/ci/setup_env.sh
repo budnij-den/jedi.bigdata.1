@@ -110,6 +110,8 @@ if $ONLY_DOWNLOAD; then
 fi
 
 echo "Extracting ${HADOOP_HOME}/hadoop.tar.gz into $HADOOP_HOME"
+# TODO: remove this below after first successful build
+rm -rf ${TRAVIS_CACHE}/${HADOOP_DISTRO}/hadoop.tar.gz
 tar zxf ${TRAVIS_CACHE}/${HADOOP_DISTRO}/hadoop.tar.gz --strip-components 1 -C $HADOOP_HOME
 
 if [ $? != 0 ]; then
@@ -126,6 +128,8 @@ fi
 
 echo "Downloading and unpacking hive"
 curl -z ${TRAVIS_CACHE}/hive/hive.tar.gz -o ${TRAVIS_CACHE}/hive/hive.tar.gz -L ${HIVE_URL}
+# TODO: remove this below after first successful build
+rm -rf ${TRAVIS_CACHE}/hive/hive.tar.gz
 tar zxf ${TRAVIS_CACHE}/hive/hive.tar.gz --strip-components 1 -C ${HIVE_HOME}
 
 if [ $? != 0 ]; then
